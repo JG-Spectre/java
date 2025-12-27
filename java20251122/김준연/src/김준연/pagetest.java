@@ -88,5 +88,13 @@ public class pagetest {
 			System.out.println();
 			star++;
 		}
+		
+		String numlen="12345";
+		int addval=0;
+		for(int u=0;u<numlen.length();u++)
+		{
+			addval+=numlen.charAt(u) - 48;
+		}
+		System.out.println(addval);
 	}
 }
