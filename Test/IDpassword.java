@@ -31,13 +31,18 @@ public class IDpassword {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		while(true)
-		System.out.print("아이디 입력\n(뒤로 가려면 exit 입력)\n>>");
-		String inputid=sc.nextLine();
-		if(count>0)
-			for(int i=1;i<=count;i++)
-			{
-				
-			}
+		{
+			System.out.print("아이디 입력\n(뒤로 가려면 exit 입력)\n>>");
+			String inputid=sc.nextLine();
+			if(count>0)
+				for(int i=0;i<count;i++)
+				{
+					if(inputid.equals(ids[count]))
+						System.out.println("이미 존재하는 아이디입니다.\n");
+					
+				}
+		}
+		
 			
 	}
 
