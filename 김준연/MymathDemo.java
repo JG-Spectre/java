@@ -8,8 +8,8 @@ public class MymathDemo {
 		System.out.print("반지름 입력\n>>");
 		Scanner sc=new Scanner(System.in);
 		double r=sc.nextDouble();
-		System.out.print("원의 둘레 : "+MyMath.getCirclePerimeter(r));
-		System.out.println("원의 면적 :"+MyMath.getCircleArea(r));
+		System.out.println("원의 둘레 : "+MyMath.getCirclePerimeter(r));
+		System.out.println("원의 면적 : "+MyMath.getCircleArea(r));
 		System.out.print("마일 입력\n>>");
 		r=sc.nextDouble();
 		System.out.println(MyMath.mileToKilometer(r)+"킬로미터와 같음");
