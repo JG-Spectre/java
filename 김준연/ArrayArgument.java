@@ -7,10 +7,10 @@ public class ArrayArgument {
 		int[] array=new int[10];
 		Random rnd=new Random();
 		for(int i=0;i<10;i++) array[i]=rnd.nextInt();
-		System.out.println("전 :");
+		System.out.println("�쟾 :");
 		printArray(array);
 		increaseArray(array);
-		System.out.println("후 :");
+		System.out.println("�썑 :");
 		printArray(array);
 	}
 	public static void increaseArray(int[] arr)
