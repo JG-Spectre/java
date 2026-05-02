@@ -6,7 +6,7 @@ public class SoccerTeamManager {
 		
 	}
 	public static void main(String[] args) {
-		start();
+		
 	}
 }
 
