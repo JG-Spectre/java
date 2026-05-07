@@ -31,27 +31,24 @@ class Beverage
 		return getName()+" - "+getPrice()+"원"; 
 	}
 }
-
+enum beanType { bean1,bean2,bean3 }
+	
 class Coffee extends Beverage
 {
 	beanType bean;
-	enum beanType
-	{
-		bean1,bean2,bean3
-	}
 	
 	private String toValue()
 	{
-		String bt;
+		String bt=null;
 		switch(bean)
 		{
-		case beanType.bean1:
+		case bean1:
 			bt="bean1";
 			break;
-		case beanType.bean2:
+		case bean2:
 			bt="bean2";
 			break;
-		case beanType.bean3:
+		case bean3:
 			bt="bean3";
 			break;
 		}
@@ -64,7 +61,16 @@ class Coffee extends Beverage
 	}
 	String info()
 	{
-		return getName()+" - "+getPrice()+"원 (원두 : "+toValue()+")";
+		return super.info()+" (원두 : "+toValue()+")";
+	}
+}
+class Latte extends Coffee
+{
+	int milkAmount;
+	public Latte(String name,int price,beanType bt, int milk) {super(name,price,bt); milkAmount = milk;}
+	String info()
+	{
+		return super.info()+" (사용된 우유량 : "+milkAmount+"mL)";
 	}
 }
 
@@ -78,6 +84,12 @@ public class BeverageTest {
 //		
 //	}
 	public static void main(String[] args) {
+		Beverage[] drinks = {
+			new Beverage("물",1000),
+			new Beverage("오렌지주스",2300),
+			new Coffee("아메리카노",4000,beanType.bean1),
+			new Latte("라떼",5600,beanType.bean2,20)
+		};
 		
 	}
 }
