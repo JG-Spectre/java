@@ -16,13 +16,14 @@ public class SoccerTeamManager {
 		{
 			System.out.print("<축구구단 관리 프로그램>\n1. 구단 추가\n2. 구단 편집\n3. 구단 삭제\n4. 구단 보기\n5. 프로그램 종료\n>>");
 			int select=sc.nextInt();
+			sc.nextLine();
 			switch (select)
 			{
 			case 1: 구단추가(); break;
 			case 2: 구단편집(); break;
 			case 3:  break;
 			case 4: 구단보기(); break;
-			case 5:  break;
+			case 5: return;
 			default:System.out.println("올바르지 않은 값입니다.");
 			}
 		}
@@ -30,6 +31,7 @@ public class SoccerTeamManager {
 	public static void main(String[] args) {
 		SoccerTeamManager starter = new SoccerTeamManager();
 		starter.start();
+		System.out.println("프로그램 종료");
 	}
 	
 	void 구단추가()
@@ -53,10 +55,11 @@ public class SoccerTeamManager {
 	}
 	void 구단보기()
 	{
-		System.out.println("<<구단 보기>>");
+		System.out.println("<<구단 보기>>\n");
 		for (int i=0;i<구단count;i++)
 		{
-			
+			System.out.println("<<"+구단s[i].get구단명()+">>");
+			구단s[i].선수보기();
 		}
 	}
 }
@@ -71,43 +74,70 @@ class 구단
 	public void start() {
 		while (true)
 		{
-			System.out.print("<<"+get구단명()+" 편집>>\n1. 코치 추가\n2. 선수 추가\n3. 코치 제거\n4. 선수 제거\n5. 나가기\n>>");
+			System.out.print("\n<<"+get구단명()+" 편집>>\n1. 코치 추가\n2. 선수 추가\n3. 코치 제거\n4. 선수 제거\n5. 나가기\n>>");
 			int select=sc.nextInt();
+			sc.nextLine();
 			switch (select)
 			{
 			case 1: 코치추가(); break;
 			case 2: 선수추가(); break;
-			case 3:  break;
+			case 3: 코치제거(); break;
 			case 4:  break;
-			case 5:  break;
+			case 5: return;
 			default:System.out.println("올바르지 않은 값입니다.");
 			}
 		}
 	}
 	void 코치추가()
 	{
-		System.out.print("<<코치 추가>>\n코치 이름 입력\n>>");
-		String newCoach = sc.nextLine();
-		set코치(newCoach);
-		System.out.println(">"+newCoach+"이(가) 추가되었습니다.");
+		System.out.print("<<코치 추가>>\n코치 이름 입력\n>>"); String newCoach = sc.nextLine();
+		set코치(newCoach); System.out.println(">"+newCoach+" 코치가 추가되었습니다.");
 	}
 	void 선수추가()
 	{
 		System.out.println("<<선수 추가>>");
-		System.out.print("선수 이름 입력\n>>");
-		String newPlayer = sc.nextLine();
-		System.out.print(newPlayer+" 선수의 연봉 입력\n>>");
-		int newMoney = sc.nextInt();
-		선수s[선수count] = new 선수(newPlayer,newMoney);
-		선수count++;
-		System.out.println(">"+newPlayer+"이(가) 추가되었습니다. (연봉 : "+newMoney+"만원)");
+		System.out.print("선수 이름 입력\n>>"); String newPlayer = sc.nextLine();
+		System.out.print(newPlayer+" 선수의 연봉 입력\n>>"); int newMoney = sc.nextInt();
+		선수s[선수count] = new 선수(newPlayer,newMoney); 선수count++; System.out.println(">"+newPlayer+"이(가) 추가되었습니다. (연봉 : "+newMoney+"만원)");
+	}
+	void 코치제거()
+	{
+		while (true)
+		{
+			System.out.println(get코치()+" 코치를 제거하시겠습니까? (제거하려면 '예', 취소하려면 '아니오'");
+			String choose = sc.nextLine();
+			if (choose.equals("예")) { 
+				String name = get코치();
+				set코치(null); 
+				System.out.println(name+" 코치가 구단에서 제거되었습니다.");
+				return;
+			}
+			else if (choose.equals("아니오"))
+			{
+				System.out.println("코치 제거를 취소하였습니다.");
+				return;
+			}
+			else
+				System.out.println("예 또는 아니오 중에서 입력해주세요.");
+		}
+	}
+	void 선수제거()
+	{
+		
 	}
 	void 선수보기()
 	{
+		if (코치 != null)
+			System.out.println(" 코치 : "+코치);
+		else
+			System.out.println(" 코치 : 없음");
+		System.out.println(" "+get구단명()+"의 선수");
 		for (int j=0;j<선수count;j++)
 		{
-			
+			System.out.println(선수s[j]);
+			//System.out.println("  > "+선수s[j].get선수명()+" (연봉 : "+선수s[j].get연봉()+"만원)");
 		}
+		System.out.println();
 	}
 }
 
@@ -116,4 +146,10 @@ class 선수
 	private String 선수명; private int 연봉;
 	public String get선수명() {return 선수명;} public void set선수명(String 선수명) {this.선수명 = 선수명;} public int get연봉() {return 연봉;} public void set연봉(int 연봉) {this.연봉 = 연봉;}
 	public 선수(String 선수명, int 연봉) {this.선수명 = 선수명;this.연봉 = 연봉;}
+	
+	@Override
+	public String toString()
+	{
+		return "  > "+get선수명()+" (연봉 : "+get연봉()+"만원)";
+	}
 }
