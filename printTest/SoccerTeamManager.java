@@ -57,7 +57,7 @@ public class SoccerTeamManager {
 	{
 		while (true)
 		{
-			System.out.println("제거하고싶은 선수의 번호를 입력해주세요.");
+			System.out.println("제거하고싶은 구단의 번호를 입력해주세요.");
 			for (int i=0;i<구단count;i++) System.out.println(i+1+". "+구단s[i].get구단명()); System.out.println(구단count+1+". 취소");
 			int choice = sc.nextInt();
 			if (choice == 구단count+1) break;
@@ -170,7 +170,10 @@ class 구단
 		for (int i=0;i<선수count;i++)
 		{
 			선수s[i].선수명잘라내기();
+			선수s[i] = null;
 		}
+		선수s = null;
+		set코치(null);
 		String name = get구단명(); set구단명(null); return name;
 	}
 }
