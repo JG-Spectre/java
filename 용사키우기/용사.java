@@ -16,6 +16,16 @@ public class 용사 {
 	public void 상태출력() { System.out.printf("[%s] Lv.%d HP:%d/%d SHIELD:%d ATK:%d DEF:%d%n",name,level,hp,maxhp,maxshield,attack,defense); }
 	public String 이름반환() { return name; }
 	public int 체력반환() { return hp; }
+	public void 체력설정(int hp) {
+		this.hp = hp;
+		if (this.hp > this.maxhp)
+			this.hp = this.maxhp;
+	}
+	public void 체력추가(int addhp) {
+		this.hp += addhp;
+		if (this.hp > this.maxhp)
+			this.hp = this.maxhp;
+	}
 	public int 단계반환() { return stage; }
 	public int 코인반환() { return coin; }
 	public List<아이템> 인벤토리반환() { return inventory; }
@@ -154,4 +164,41 @@ public class 용사 {
 		System.out.println("\n이게 나다.");
 		상태출력();
 	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	public int getMaxhp() {
+		return maxhp;
+	}
+	public void setMaxhp(int maxhp) {
+		this.maxhp = maxhp;
+	}
+	public int getShield() {
+		return shield;
+	}
+	public void setShield(int shield) {
+		this.shield = shield;
+	}
+	public int getMaxshield() {
+		return maxshield;
+	}
+	public void setMaxshield(int maxshield) {
+		this.maxshield = maxshield;
+	}
+	public int getAttack() {
+		return attack;
+	}
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+	public int getDefense() {
+		return defense;
+	}
+	public void setDefense(int defense) {
+		this.defense = defense;
+	}
+	
 }
