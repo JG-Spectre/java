@@ -2,16 +2,24 @@ package 용사키우기;
 
 import java.util.List;
 
+
+enum 장비타입
+{
+	방어구, 무기
+}
+
 public class 장비아이템 extends 아이템 
 {
 	private final int attackBonus;
 	private final int defenseBonus;
 	private boolean equipped;
-	public 장비아이템(아이템아이디 id,int attackBonus, int defenseBonus)
+	장비타입 itemType;
+	public 장비아이템(아이템아이디 id,int attackBonus, int defenseBonus, 장비타입 itemType)
 	{
 		super(id);
 		this.attackBonus = attackBonus;
 		this.defenseBonus = defenseBonus;
+		this.itemType = itemType;
 	}
 	@Override
 	public void 사용(용사 hero)
@@ -22,10 +30,7 @@ public class 장비아이템 extends 아이템
 			아이템 myitem = inventory.get(i);
 			
 			if(myitem.id == 아이템아이디.WOODEN_SWORD) {
-				if (장착여부반환()) {
-					해제();
-					장착();
-				}
+				장착(hero,myitem.id,1);
 			}
 			if(myitem.id == 아이템아이디.IRON_SWORD) {
 				hero.체력추가(80);
@@ -64,9 +69,20 @@ public class 장비아이템 extends 아이템
 			}
 		}
 	}
-	public void 해제(용사 hero)
+	public void 해제(용사 hero,int itemType)
 	{
-		
+		equipped = false;
+		switch (itemType)
+		{
+		case 1:{ hero.setAttack(hero.getAttack()-attackBonus); break; }
+		case 2:{ hero.setDefense(hero.getDefense()-defenseBonus); break; }
+		}
+	}
+	public void 장착(용사 hero,아이템아이디 id,int itemType)
+	{
+		if (장착여부반환()) {
+			해제(hero,itemType);
+		}
 	}
 	public boolean 장착여부반환() { return equipped; }
 	public int 공격력보너스반환() { return attackBonus; }

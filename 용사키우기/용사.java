@@ -105,7 +105,7 @@ public class 용사 {
 		System.out.println("\n상점이다. 어떤걸 구매해볼까? (잔액 : "+코인반환()+"코인)");
 		
 		아이템아이디 목록;
-		목록.표시이름반환();
+//		목록.표시이름반환();
 	}
 	public void 단련() {
 		Scanner sc = new Scanner(System.in);
