@@ -30,59 +30,61 @@ public class 장비아이템 extends 아이템
 			아이템 myitem = inventory.get(i);
 			
 			if(myitem.id == 아이템아이디.WOODEN_SWORD) {
-				장착(hero,myitem.id,1);
+				장착(hero,myitem.id);
+				hero.setAttack(hero.getAttack()+attackBonus);
+				System.out.println("나무 검 장착 완료! (공격력 +3)");
 			}
 			if(myitem.id == 아이템아이디.IRON_SWORD) {
-				hero.체력추가(80);
-				System.out.println("회복 포션 사용! 체력 +80 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
-				break;
+				장착(hero,myitem.id);
+				hero.setAttack(hero.getAttack()+attackBonus);
+				System.out.println("철제 검 장착 완료! (공격력 +7)");
 			}
 			if(myitem.id == 아이템아이디.IRON_SHIELD) {
-				hero.체력추가(200);
-				System.out.println("대형 회복 포션 사용! 체력 +200 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
-				break;
+				장착(hero,myitem.id);
+				hero.setAttack(hero.getAttack()+attackBonus);
+				System.out.println("철제 방패 장착 완료! (공격력 +7, 방어력 +3)");
 			}
 			if(myitem.id == 아이템아이디.IRON_SPEAR) {
-				hero.체력설정(hero.getMaxhp());
-				System.out.println("초대형 회복 포션 사용! 체력 +30 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
-				break;
+				장착(hero,myitem.id);
+				hero.setAttack(hero.getAttack()+attackBonus);
+				System.out.println("철제 창 장착 완료! (공격력 +7, 방어력무시 +2)");
 			}
+			
 			if(myitem.id == 아이템아이디.LEATHER_ARMOR) {
-				hero.체력추가(30);
-				System.out.println("소형 회복 포션 사용! 체력 +30 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
-				break;
+				장착(hero,myitem.id);
+				hero.setDefense(hero.getDefense()+defenseBonus);
+				System.out.println("가죽 갑옷 장착 완료! (방어력 +3)");
 			}
 			if(myitem.id == 아이템아이디.IRON_PLATE) {
-				hero.체력추가(80);
-				System.out.println("회복 포션 사용! 체력 +80 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
-				break;
+				장착(hero,myitem.id);
+				hero.setDefense(hero.getDefense()+defenseBonus);
+				System.out.println("가죽 갑옷 플레이트 장착 완료! (방어력 +3, 시작쉴드 +5)");
 			}
 			if(myitem.id == 아이템아이디.IRON_ARMOR) {
-				hero.체력추가(200);
-				System.out.println("대형 회복 포션 사용! 체력 +200 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
-				break;
+				장착(hero,myitem.id);
+				hero.setDefense(hero.getDefense()+defenseBonus);
+				System.out.println("철제 갑옷 장착 완료! (방어력 +8)");
 			}
 			if(myitem.id == 아이템아이디.STEEL_PLATE) {
-				hero.체력설정(hero.getMaxhp());
-				System.out.println("초대형 회복 포션 사용! 체력 +30 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
-				break;
+				장착(hero,myitem.id);
+				hero.setDefense(hero.getDefense()+defenseBonus);
+				System.out.println("강철 갑옷 플레이트 장착 완료! (방어력 +8, 시작쉴드 +20)");
 			}
 		}
 	}
-	public void 해제(용사 hero,int itemType)
+	public void 해제(용사 hero,아이템아이디 id)
 	{
 		equipped = false;
 		switch (itemType)
 		{
-		case 1:{ hero.setAttack(hero.getAttack()-attackBonus); break; }
-		case 2:{ hero.setDefense(hero.getDefense()-defenseBonus); break; }
+		case 무기:{ hero.setAttack(hero.getAttack()-attackBonus); if(id == 아이템아이디.IRON_SHIELD) hero.setDefense(hero.getDefense()-defenseBonus); break; }
+		case 방어구:{ hero.setDefense(hero.getDefense()-defenseBonus); break; }
 		}
 	}
-	public void 장착(용사 hero,아이템아이디 id,int itemType)
+	public void 장착(용사 hero,아이템아이디 id)
 	{
-		if (장착여부반환()) {
-			해제(hero,itemType);
-		}
+		if (장착여부반환()) 해제(hero,id);
+		
 	}
 	public boolean 장착여부반환() { return equipped; }
 	public int 공격력보너스반환() { return attackBonus; }

@@ -1,11 +1,12 @@
 package 용사키우기;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
 public class 용사 {
-	private String name; private int level; private int hp; private int maxhp; private int shield; private int maxshield; private int attack; private int defense; private int stage; private int coin;
+	private String name; private int level; private int hp; private int maxhp; private int shield; private int startshield; private int attack; private int defense; private int stage; private int coin;
 	private final List<아이템> inventory = new ArrayList<>();
 	public 용사(String name,int maxHp, int shield, int attack,int defense) { this.name = name; this.level = 1; this.maxhp = maxHp; this.hp = maxHp; this.shield=shield; this.attack = attack; this.defense = defense; }
 	public void 아이템추가(아이템 item) { inventory.add(item); }
@@ -13,7 +14,7 @@ public class 용사 {
 		
 	}
 	public void 데미지받기(int damage) throws 게임오버Exception { hp -= damage; }
-	public void 상태출력() { System.out.printf("[%s] Lv.%d HP:%d/%d SHIELD:%d ATK:%d DEF:%d%n",name,level,hp,maxhp,maxshield,attack,defense); }
+	public void 상태출력() { System.out.printf("[%s] Lv.%d HP:%d/%d SHIELD:%d ATK:%d DEF:%d%n",name,level,hp,maxhp,startshield,attack,defense); }
 	public String 이름반환() { return name; }
 	public int 체력반환() { return hp; }
 	public void 체력설정(int hp) {
@@ -102,9 +103,23 @@ public class 용사 {
 	
 	}
 	public void 상점() {
+		HashMap<String, 아이템> shopitems = new HashMap<String, 아이템>();
+		shopitems.put(아이템아이디.WOODEN_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
+		shopitems.put(아이템아이디.IRON_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
+		shopitems.put(아이템아이디.IRON_SHIELD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
+		shopitems.put(아이템아이디.IRON_SPEAR.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
+		
+		shopitems.put(아이템아이디.WOODEN_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
+		
+		
+		
 		System.out.println("\n상점이다. 어떤걸 구매해볼까? (잔액 : "+코인반환()+"코인)");
 		
 		아이템아이디 목록;
+		for (int i=0;i<12;i++)
+		{
+			
+		}
 //		목록.표시이름반환();
 	}
 	public void 단련() {
@@ -183,10 +198,10 @@ public class 용사 {
 		this.shield = shield;
 	}
 	public int getMaxshield() {
-		return maxshield;
+		return startshield;
 	}
 	public void setMaxshield(int maxshield) {
-		this.maxshield = maxshield;
+		this.startshield = maxshield;
 	}
 	public int getAttack() {
 		return attack;
