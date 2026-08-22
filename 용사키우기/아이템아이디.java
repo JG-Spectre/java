@@ -11,10 +11,10 @@ public enum 아이템아이디 {
 	IRON_ARMOR("철제 갑옷","완전히 철로 덮여 방어력을 월등히 올려주는 갑옷"),
 	STEEL_PLATE("강철 갑옷 플레이트","철 갑옷 안에 강철 플레이트를 넣어 창도 막아내는 갑옷"),
 	
-	SMALL_HEALTH_POTION("회복 물약","사용 시 체력 +30"),
-	HEALTH_POTION("회복 물약","사용 시 체력 +80"),
-	BIG_HEALTH_POTION("회복 물약","사용 시 체력 +200"),
-	MEGA_HEALTH_POTION("회복 물약","사용 시 체력 즉시 전부 충전")
+	SMALL_HEALTH_POTION("소형 회복 물약","사용 시 체력 +30"),
+	HEALTH_POTION("중형 회복 물약","사용 시 체력 +80"),
+	BIG_HEALTH_POTION("대형 회복 물약","사용 시 체력 +200"),
+	HUGE_HEALTH_POTION("특대형 회복 물약","사용 시 체력 즉시 전부 회복")
 	;
 	private final String displayName;
 	private final String description;

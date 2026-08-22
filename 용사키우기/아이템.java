@@ -2,7 +2,16 @@ package 용사키우기;
 
 public abstract class 아이템 {
 	protected final 아이템아이디 id;
+	protected int value;
 	protected 아이템(아이템아이디 id) { this.id = id; }
+	
+	
+	public 아이템(아이템아이디 id, int value) {
+		this.id = id;
+		this.value = value;
+	}
+
+
 	public 아이템아이디 아이템반환()
 	{
 		return id;
@@ -18,4 +27,12 @@ public abstract class 아이템 {
 	{
 		return "["+id.표시이름반환()+"] "+id.설명반환();
 	}
+	public int getValue() {
+		return value;
+	}
+	public void setValue(int value) {
+		this.value = value;
+	}
+	
+	
 }

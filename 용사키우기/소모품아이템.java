@@ -33,9 +33,9 @@ public class 소모품아이템 extends 아이템 {
 				System.out.println("대형 회복 포션 사용! 체력 +200 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
 				break;
 			}
-			if(myitem.id == 아이템아이디.MEGA_HEALTH_POTION) {
+			if(myitem.id == 아이템아이디.HUGE_HEALTH_POTION) {
 				hero.체력설정(hero.getMaxhp());
-				System.out.println("초대형 회복 포션 사용! 체력 +30 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
+				System.out.println("특대형 회복 포션 사용! 체력 +9999 (현재 체력 : "+hero.체력반환()+"/"+hero.getMaxhp()+")");
 				break;
 			}
 		}

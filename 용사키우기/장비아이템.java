@@ -16,11 +16,18 @@ public class 장비아이템 extends 아이템
 	장비타입 itemType;
 	public 장비아이템(아이템아이디 id,int attackBonus, int defenseBonus, 장비타입 itemType)
 	{
-		super(id);
+		this(id, attackBonus, defenseBonus, itemType, 0);
+	}
+	
+	
+	public 장비아이템(아이템아이디 id, int attackBonus, int defenseBonus, 장비타입 itemType, int price) {
+		super(id, price);
 		this.attackBonus = attackBonus;
 		this.defenseBonus = defenseBonus;
 		this.itemType = itemType;
 	}
+
+
 	@Override
 	public void 사용(용사 hero)
 	{

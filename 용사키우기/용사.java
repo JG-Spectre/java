@@ -2,6 +2,7 @@ package 용사키우기;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,7 +35,16 @@ public class 용사 {
 	public void 토벌() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
-		System.out.print("무엇이든 천천히 하는 것이 중요하다.\n토벌을 시작할까? (현재 토벌 지역 : ");
+		switch(단계반환()) {
+		case 1:System.out.println("무엇이든 천천히 하는 것이 중요하다.");break;
+		case 2:System.out.println("평범한 숲처럼 보이지만, 위험요소가 득실거린다.");break;
+		case 3:System.out.println("녀석들을 캐물으면 무언가 단서가 나오지 않을까?");break;
+		case 4:System.out.println("여기에 통로가 있다고 하던데.");break;
+		case 5:System.out.println("이곳 어딘가에 녀석에게로 향하는 곳이 있을것이다.");break;
+		case 6:System.out.println("녀석의 기운에 구역질이 올라오는군.");break;
+		case 7:System.out.println("마지막이다.");break;
+		}
+		System.out.print("토벌을 시작할까? (현재 토벌 지역 : ");
 		switch(단계반환()) {
 		case 1:System.out.print("고블린 동굴");break;
 		case 2:System.out.print("울창한 숲");break;
@@ -103,23 +113,40 @@ public class 용사 {
 	
 	}
 	public void 상점() {
-		HashMap<String, 아이템> shopitems = new HashMap<String, 아이템>();
-		shopitems.put(아이템아이디.WOODEN_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
-		shopitems.put(아이템아이디.IRON_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
-		shopitems.put(아이템아이디.IRON_SHIELD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
-		shopitems.put(아이템아이디.IRON_SPEAR.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
+		HashMap<String, 아이템> shopitems = new LinkedHashMap<String, 아이템>();
+		shopitems.put(아이템아이디.WOODEN_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기, 5000));
+		shopitems.put(아이템아이디.IRON_SWORD.toString(), new 장비아이템(아이템아이디.IRON_SWORD,9,0,장비타입.무기));
+		shopitems.put(아이템아이디.IRON_SHIELD.toString(), new 장비아이템(아이템아이디.IRON_SHIELD,5,3,장비타입.무기));
+		shopitems.put(아이템아이디.IRON_SPEAR.toString(), new 장비아이템(아이템아이디.IRON_SPEAR,7,0,장비타입.무기));
 		
-		shopitems.put(아이템아이디.WOODEN_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD,3,0,장비타입.무기));
+		shopitems.put(아이템아이디.LEATHER_ARMOR.toString(), new 장비아이템(아이템아이디.LEATHER_ARMOR,3,0,장비타입.방어구));
+		shopitems.put(아이템아이디.IRON_PLATE.toString(), new 장비아이템(아이템아이디.IRON_PLATE,3,0,장비타입.방어구));
+		shopitems.put(아이템아이디.IRON_ARMOR.toString(), new 장비아이템(아이템아이디.IRON_ARMOR,3,0,장비타입.방어구));
+		shopitems.put(아이템아이디.STEEL_PLATE.toString(), new 장비아이템(아이템아이디.STEEL_PLATE,3,0,장비타입.방어구));
 		
+		shopitems.put(아이템아이디.SMALL_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.SMALL_HEALTH_POTION,30));
+		shopitems.put(아이템아이디.HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.HEALTH_POTION,80));
+		shopitems.put(아이템아이디.BIG_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.BIG_HEALTH_POTION,200));
+		shopitems.put(아이템아이디.HUGE_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.HUGE_HEALTH_POTION,9999));
 		
-		
-		System.out.println("\n상점이다. 어떤걸 구매해볼까? (잔액 : "+코인반환()+"코인)");
+		System.out.println("\n상점이다. 어떤걸 구매해볼까? ( 잔액 : "+코인반환()+"코인 )");
 		
 		아이템아이디 목록;
-		for (int i=0;i<12;i++)
+		for (Object s : shopitems.keySet())
 		{
-			
+			System.out.println(shopitems.get(s));
 		}
+		Scanner sc = new Scanner(System.in);
+		String buying = sc.nextLine();
+		
+		if(shopitems.containsKey(buying)) {
+			아이템 item = shopitems.get(buying);
+			System.out.println(item.이름반환()+" 아이템을 "+item.value+"코인에 구매하시겠습니까?(y/n) ( 내 잔액 : "+this.coin+"코인 )");
+			
+			this.inventory.add(item);
+			System.out.println(item.이름반환()+" 아이템을 구매했습니다!");
+		}
+		
 //		목록.표시이름반환();
 	}
 	public void 단련() {
