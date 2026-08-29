@@ -25,4 +25,10 @@ public enum 아이템아이디 {
 	public String 설명반환() {
 		return description;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return displayName;
+	}
 }
