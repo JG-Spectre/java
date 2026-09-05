@@ -5,9 +5,9 @@ import java.util.List;
 
 public class 소모품아이템 extends 아이템 {
 	private final int healAmount;
-	public 소모품아이템(아이템아이디 id, int healAmount)
+	public 소모품아이템(아이템아이디 id, int healAmount, int value)
 	{
-		super(id);
+		super(id, value);
 		this.healAmount = healAmount;
 	}
 	@Override

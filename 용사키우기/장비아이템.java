@@ -20,8 +20,8 @@ public class 장비아이템 extends 아이템
 	}
 	
 	
-	public 장비아이템(아이템아이디 id, int attackBonus, int defenseBonus, 장비타입 itemType, int price) {
-		super(id, price);
+	public 장비아이템(아이템아이디 id, int attackBonus, int defenseBonus, 장비타입 itemType, int value) {
+		super(id, value);
 		this.attackBonus = attackBonus;
 		this.defenseBonus = defenseBonus;
 		this.itemType = itemType;

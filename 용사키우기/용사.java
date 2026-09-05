@@ -238,20 +238,20 @@ public class 용사 {
 
 	public void 상점() {
 		HashMap<String, 아이템> shopitems = new LinkedHashMap<String, 아이템>();
-		shopitems.put(아이템아이디.WOODEN_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD, 3, 0, 장비타입.무기, 5000));
-		shopitems.put(아이템아이디.IRON_SWORD.toString(), new 장비아이템(아이템아이디.IRON_SWORD, 9, 0, 장비타입.무기));
-		shopitems.put(아이템아이디.IRON_SHIELD.toString(), new 장비아이템(아이템아이디.IRON_SHIELD, 5, 3, 장비타입.무기));
-		shopitems.put(아이템아이디.IRON_SPEAR.toString(), new 장비아이템(아이템아이디.IRON_SPEAR, 7, 0, 장비타입.무기));
+		shopitems.put(아이템아이디.WOODEN_SWORD.toString(), new 장비아이템(아이템아이디.WOODEN_SWORD, 3, 0, 장비타입.무기, 400));
+		shopitems.put(아이템아이디.IRON_SWORD.toString(), new 장비아이템(아이템아이디.IRON_SWORD, 9, 0, 장비타입.무기, 1000));
+		shopitems.put(아이템아이디.IRON_SHIELD.toString(), new 장비아이템(아이템아이디.IRON_SHIELD, 5, 3, 장비타입.무기, 1200));
+		shopitems.put(아이템아이디.IRON_SPEAR.toString(), new 장비아이템(아이템아이디.IRON_SPEAR, 7, 0, 장비타입.무기,1500));
 
-		shopitems.put(아이템아이디.LEATHER_ARMOR.toString(), new 장비아이템(아이템아이디.LEATHER_ARMOR, 3, 0, 장비타입.방어구));
-		shopitems.put(아이템아이디.IRON_PLATE.toString(), new 장비아이템(아이템아이디.IRON_PLATE, 3, 0, 장비타입.방어구));
-		shopitems.put(아이템아이디.IRON_ARMOR.toString(), new 장비아이템(아이템아이디.IRON_ARMOR, 3, 0, 장비타입.방어구));
-		shopitems.put(아이템아이디.STEEL_PLATE.toString(), new 장비아이템(아이템아이디.STEEL_PLATE, 3, 0, 장비타입.방어구));
+		shopitems.put(아이템아이디.LEATHER_ARMOR.toString(), new 장비아이템(아이템아이디.LEATHER_ARMOR, 3, 0, 장비타입.방어구,600));
+		shopitems.put(아이템아이디.IRON_PLATE.toString(), new 장비아이템(아이템아이디.IRON_PLATE, 3, 0, 장비타입.방어구,1400));
+		shopitems.put(아이템아이디.IRON_ARMOR.toString(), new 장비아이템(아이템아이디.IRON_ARMOR, 3, 0, 장비타입.방어구,2000));
+		shopitems.put(아이템아이디.STEEL_PLATE.toString(), new 장비아이템(아이템아이디.STEEL_PLATE, 3, 0, 장비타입.방어구,3500));
 
-		shopitems.put(아이템아이디.SMALL_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.SMALL_HEALTH_POTION, 30));
-		shopitems.put(아이템아이디.HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.HEALTH_POTION, 80));
-		shopitems.put(아이템아이디.BIG_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.BIG_HEALTH_POTION, 200));
-		shopitems.put(아이템아이디.HUGE_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.HUGE_HEALTH_POTION, 9999));
+		shopitems.put(아이템아이디.SMALL_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.SMALL_HEALTH_POTION, 30, 60));
+		shopitems.put(아이템아이디.HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.HEALTH_POTION, 80, 200));
+		shopitems.put(아이템아이디.BIG_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.BIG_HEALTH_POTION, 200, 1000));
+		shopitems.put(아이템아이디.HUGE_HEALTH_POTION.toString(), new 소모품아이템(아이템아이디.HUGE_HEALTH_POTION, 9999, 5000));
 
 		System.out.println("\n상점이다. 어떤걸 구매해볼까? ( 잔액 : " + 코인반환() + "코인 )");
 		this.coin += 20000;
@@ -279,7 +279,7 @@ public class 용사 {
 				while (true) {
 					String confirm = sc.nextLine();
 					if (confirm.matches("y")) {
-						this.inventory.add(item);
+						아이템추가(item);
 						this.coin -= item.value;
 						System.out.println(item.이름반환() + " 아이템을 구매했습니다!\n");
 						break;
@@ -341,7 +341,7 @@ public class 용사 {
 	}
 
 	public void 인벤토리() {
-		인벤토리반환();
+		System.out.println(인벤토리반환());
 		// 아이템 사용 및 착용 여부
 
 	}

@@ -31,9 +31,16 @@ public class 용사키우기 {
 					case 3:hero.단련();break;
 					case 4:hero.인벤토리();break;
 					case 5:hero.프로필();break;
-					case 6:return;
+					case 6: {
+						sc.next();
+						System.out.println("세계에 파멸을 불러올 자의 용서하시겠습니까? ( 포기하려면 \"포기\" 입력 )");
+						String surrender = sc.nextLine();
+						if (surrender.matches("포기")) return;
+						System.out.println("그래. 이런 녀석을 왜 용서해야되는거지?"); break;
+					}
 				}
 			}
+		
 			
 //		}
 //		catch(게임오버Exception e)
@@ -51,12 +58,20 @@ public class 용사키우기 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("때는 마계가 지구와 공존하던 시절.");
 		System.out.println("클레멘스의 일반 시민 "+heroname+".");
-		System.out.println("배가 고파서 전에 사둔 푸딩을 먹으려 하는데...");
+		System.out.println("\n넘어가려면 아무거나 입력하고 엔터");
+		sc.next();
+		System.out.println("\n배가 고파서 전에 사둔 푸딩을 먹으려 하는데...");
 		System.out.println("아니글쎄 푸딩이 사라진 것이다!");
-		System.out.println("그리고 놓여있는 쪽지 한장.");
-		System.out.println("\"잘 먹고감 ㅋ\" -마왕");
-		System.out.println("그렇게 용사는 모험을 시작하게 된다...\n");
-		System.out.println("넘어가려면 아무거나 입력하고 엔터");
+		System.out.println("\n넘어가려면 아무거나 입력하고 엔터");
+		sc.next();
+		System.out.println("\n그리고 놓여있는 쪽지 한장.");
+		System.out.println("\n넘어가려면 아무거나 입력하고 엔터");
+		sc.next();
+		System.out.println("\n\"잘 먹고감 ㅋ\" -마왕");
+		System.out.println("\n넘어가려면 아무거나 입력하고 엔터");
+		sc.next();
+		System.out.println("\n그렇게 용사는 모험을 시작하게 된다...");
+		System.out.println("\n넘어가려면 아무거나 입력하고 엔터");
 		sc.next();
 		System.out.println();
 	}
