@@ -32,7 +32,6 @@ public class 용사키우기 {
 					case 4:hero.인벤토리();break;
 					case 5:hero.프로필();break;
 					case 6: {
-						sc.next();
 						System.out.println("세계에 파멸을 불러올 자의 용서하시겠습니까? ( 포기하려면 \"포기\" 입력 )");
 						String surrender = sc.nextLine();
 						if (surrender.matches("포기")) return;
